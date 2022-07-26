@@ -44,7 +44,6 @@ CAGR_formula_BRFSS <- function(EndVal, StartVal, years = 20) {
 CAGR_B <- mutate(CAGR3B,
                  CAGR_Perc = CAGR_formula_BRFSS(StartVal = Start, EndVal = End, years = 20)*100)
 
-
 #NHIS
 N.pop <- N.overall[ which(N.overall$Dem_group == "US Population"), ]
 N.CAGR <- N.pop[N.pop$Year %in% c("2002", "2018"), ]
@@ -52,7 +51,6 @@ N.CAGR$Year[N.CAGR$Year == "2002"] <- "Start"
 N.CAGR$Year[N.CAGR$Year == "2018"] <- "End"
 #since we are only working with the proportions themselves, temporarily remove CI's
 N.CAGR <- subset(N.CAGR, select = c("Proportion", "Year"))
-
 
 N.pop.no <- N.NO.overall[ which(N.NO.overall$Dem_group == "US Population"), ]
 N.CAGR.no <- N.pop.no[N.pop.no$Year %in% c("2002", "2018"), ]
@@ -74,7 +72,6 @@ CAGR_formula_NHIS <- function(EndVal, StartVal, years = 17) {
 
 CAGR_N <- mutate(CAGR3N,
                  CAGR_Perc = CAGR_formula_NHIS(StartVal = Start, EndVal = End, years = 17)*100)
-
 
 #NHANES
 NA.pop <- NA.overall[ which(NA.overall$Dem_group == "US Population"), ]
@@ -125,7 +122,6 @@ B.CAGR.age.no <- subset(B.CAGR.age.no, select = c("Dem_group", "Number.of.People
 B.CAGR.no.t <- merge(B.CAGR.age, B.CAGR.age.no)
 B.CAGR.no2 <- gather(B.CAGR.no.t, key = "metric", value = "amount", 3:4)
 CAGR3Bno <- spread(B.CAGR.no2, key = Year, value = amount)
-
 
 CAGR_B.age <- mutate(CAGR3Bno,
                      CAGR_Perc = CAGR_formula_BRFSS(StartVal = Start, EndVal = End, years = 20)*100)
