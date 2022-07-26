@@ -1,35 +1,34 @@
 #Ioannides AE, Wadley AL, Kamerman PR
 #Arthritis in the USA: a longitudinal analysis of three nationally representative studies
 
-# -- Calculating compound annual growth rates (CAGRs) -- 
+# -- Calculating compound annual growth rates (CAGRs) --
 
 #load packages
 library(tidyverse)
 
 # Pull the data files in from Dropbox
-B.overall <- read.csv("https://www.dropbox.com/s/gay0f51t77y80yz/BRFSS_prevalences.csv?dl=1")
-B.NO.overall <- read.csv("https://www.dropbox.com/s/p8a0n6fichbzs54/BRFSS_numbers.csv?dl=1")
-N.overall <- read.csv("https://www.dropbox.com/s/sd1dv6lxgt4squ7/NHIS_prevalences.csv?dl=1")
-N.NO.overall <- read.csv("https://www.dropbox.com/s/5z9bx31sxqua7s6/NHIS_numbers.csv?dl=1")
-NA.overall <- read.csv("https://www.dropbox.com/s/vil4fhmx7i89nis/NHANES_prevalences.csv?dl=1")
-NA.NO.overall <- read.csv("https://www.dropbox.com/s/wc85rvve51t5s2c/NHANES_numbers.csv?dl=1")
+B.overall <- read.csv("BRFSS_prevalences.csv")
+B.NO.overall <- read.csv("BRFSS_numbers.csv")
+N.overall <- read.csv("NHIS_prevalences.csv")
+N.NO.overall <- read.csv("NHIS_numbers.csv")
+NA.overall <- read.csv("NHANES_prevalences.csv")
+NA.NO.overall <- read.csv("NHANES_numbers.csv")
 
-
-#----Calculate CAGR's----
+#----Calculate CAGR's --
 
 #BRFSS
 B.pop <- B.overall[ which(B.overall$Dem_group == "US Population"), ]
 B.CAGR <- B.pop[B.pop$Year %in% c("2001", "2020"), ]
 B.CAGR$Year[B.CAGR$Year == "2001"] <- "Start"
 B.CAGR$Year[B.CAGR$Year == "2020"] <- "End"
-#since we are only working with the proportions themselves, temporarily remove CI's 
+#since we are only working with the proportions themselves, temporarily remove CI's
 B.CAGR <- subset(B.CAGR, select = c("Proportion", "Year"))
 
 B.pop.no <- B.NO.overall[ which(B.NO.overall$Dem_group == "US Population"), ]
 B.CAGR.no <- B.pop.no[B.pop.no$Year %in% c("2001", "2020"), ]
 B.CAGR.no$Year[B.CAGR.no$Year == "2001"] <- "Start"
 B.CAGR.no$Year[B.CAGR.no$Year == "2020"] <- "End"
-#since we are only working with the numbers of people themselves, temporarily remove CI's 
+#since we are only working with the numbers of people themselves, temporarily remove CI's
 B.CAGR.no <- subset(B.CAGR.no, select = c("Number.of.People", "Year"))
 
 #merge
@@ -39,7 +38,7 @@ CAGR3B <- spread(CAGR2, key = Year, value = amount)
 
 #Function: BRFSS
 CAGR_formula_BRFSS <- function(EndVal, StartVal, years = 20) {
-  values <- ((EndVal/StartVal)^(1/years) -1)
+  values <- ((EndVal/StartVal)^(1/years) - 1)
   return(values)
 }
 CAGR_B <- mutate(CAGR3B,
@@ -51,7 +50,7 @@ N.pop <- N.overall[ which(N.overall$Dem_group == "US Population"), ]
 N.CAGR <- N.pop[N.pop$Year %in% c("2002", "2018"), ]
 N.CAGR$Year[N.CAGR$Year == "2002"] <- "Start"
 N.CAGR$Year[N.CAGR$Year == "2018"] <- "End"
-#since we are only working with the proportions themselves, temporarily remove CI's 
+#since we are only working with the proportions themselves, temporarily remove CI's
 N.CAGR <- subset(N.CAGR, select = c("Proportion", "Year"))
 
 
@@ -59,7 +58,7 @@ N.pop.no <- N.NO.overall[ which(N.NO.overall$Dem_group == "US Population"), ]
 N.CAGR.no <- N.pop.no[N.pop.no$Year %in% c("2002", "2018"), ]
 N.CAGR.no$Year[N.CAGR.no$Year == "2002"] <- "Start"
 N.CAGR.no$Year[N.CAGR.no$Year == "2018"] <- "End"
-#since we are only working with the numbers of people themselves, temporarily remove CI's 
+#since we are only working with the numbers of people themselves, temporarily remove CI's
 N.CAGR.no <- subset(N.CAGR.no, select = c("Number.of.People", "Year"))
 
 #merge
@@ -82,14 +81,14 @@ NA.pop <- NA.overall[ which(NA.overall$Dem_group == "US Population"), ]
 NA.CAGR <- NA.pop[NA.pop$Year %in% c("2000", "2018"), ]
 NA.CAGR$Year[NA.CAGR$Year == "2000"] <- "Start"
 NA.CAGR$Year[NA.CAGR$Year == "2018"] <- "End"
-#since we are only working with the numbers of people themselves, temporarily remove CI's 
+#since we are only working with the numbers of people themselves, temporarily remove CI's
 NA.CAGR <- subset(NA.CAGR, select = c("Proportion", "Year"))
 
 NA.pop.no <- NA.NO.overall[ which(NA.NO.overall$Dem_group == "US Population"), ]
 NA.CAGR.no <- NA.pop.no[NA.pop.no$Year %in% c("2000", "2018"), ]
 NA.CAGR.no$Year[NA.CAGR.no$Year == "2000"] <- "Start"
 NA.CAGR.no$Year[NA.CAGR.no$Year == "2018"] <- "End"
-#since we are only working with the numbers of people themselves, temporarily remove CI's 
+#since we are only working with the numbers of people themselves, temporarily remove CI's
 NA.CAGR.no <- subset(NA.CAGR.no, select = c("Number.of.People", "Year"))
 
 #merge
