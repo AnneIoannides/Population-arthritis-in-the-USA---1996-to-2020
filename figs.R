@@ -47,7 +47,7 @@ fig1a <- ggplot(data = Overall,
         legend.text = element_text(size = 12),
         legend.position = c(0.5, 0.95)); fig1a
 
-ggsave("Figure1A.tiff", width = 200, height = 150, units = "mm", dpi = 600)
+ggsave("Figure1A.tiff", width = 200, height = 150, units = "mm", dpi = 300)
 
 #--number----
 
@@ -131,7 +131,7 @@ fig1b <- ggplot(data = Overall.NO,
         legend.text = element_text(size = 12),
         legend.position = c(0.5, 0.95)); fig1b
 
-ggsave("Figure1B.tiff", width = 200, height = 150, units = "mm", dpi = 600)
+ggsave("Figure1B.tiff", width = 200, height = 150, units = "mm", dpi = 300)
 
 #----Age----
 #--percentage----
@@ -190,7 +190,7 @@ fig2a <- ggplot(data = Age,
         legend.margin = margin(),
         legend.position = c(0.9, 0.18)); fig2a
 
-ggsave("Figure2A.tiff", width = 200, height = 150, units = "mm", dpi = 600)
+ggsave("Figure2A.tiff", width = 200, height = 150, units = "mm", dpi = 300)
 
 
 #--number----
@@ -283,7 +283,7 @@ fig2b <- ggplot(data = Age.NO,
         legend.margin = margin(),
         legend.position = c(0.9, 0.18)); fig2b
 
-ggsave("Figure2B.tiff", width = 200, height = 150, units = "mm", dpi = 600)
+ggsave("Figure2B.tiff", width = 200, height = 150, units = "mm", dpi = 300)
 
 #----Sex----
 #--percentage----
