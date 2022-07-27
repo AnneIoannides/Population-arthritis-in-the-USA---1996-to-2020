@@ -35,11 +35,12 @@ fig1a <- ggplot(data = Overall,
   scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue")) +
   scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue")) +
   guides(colour = guide_legend(ncol = 3)) +
-  ggtitle("1A: Prevalence (95% CI) of arthritis / joint pain cases") +
+  ggtitle("A") +
   theme_bw(base_size = 20, base_family = 'serif') +
   theme(panel.border = element_blank(),
         panel.grid = element_blank(),
         plot.title = element_text(size = 20),
+        plot.title.position = 'plot',
         axis.line = element_line(colour = "black", size = 0.5),
         axis.ticks = element_line(colour = "black", size = 0.5),
         axis.text = element_text(colour = 'black'),
@@ -47,7 +48,7 @@ fig1a <- ggplot(data = Overall,
         legend.text = element_text(size = 12),
         legend.position = c(0.5, 0.95)); fig1a
 
-ggsave("Figure1A.tiff", width = 200, height = 150, units = "mm", dpi = 300)
+ggsave("Figure1A.tiff", width = 200, height = 130, units = "mm", dpi = 300)
 
 #--number----
 
@@ -115,15 +116,16 @@ fig1b <- ggplot(data = Overall.NO,
   scale_y_continuous(name = "Number of people (in millions)", limits = c(25, 300), breaks = c(50, 100, 150, 200, 250, 300)) +
   scale_x_continuous(name = "Survey cycle (year)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
   scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
-                      labels = c('BRFSS', 'NHANES', 'NHIS', 'Population of USA')) +
+                      labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
   scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
-                    labels = c('BRFSS', 'NHANES', 'NHIS', 'Population of USA')) +
+                    labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
   guides(colour = guide_legend(ncol = 4)) +
-  ggtitle("1B: Number (95% CI) of arthritis / joint pain cases") +
+  ggtitle("B") +
   theme_bw(base_size = 20, base_family = 'serif') +
   theme(panel.border = element_blank(),
         panel.grid = element_blank(),
         plot.title = element_text(size = 20),
+        plot.title.position = 'plot',
         axis.line = element_line(colour = "black", size = 0.5),
         axis.ticks = element_line(colour = "black", size = 0.5),
         axis.text = element_text(colour = 'black'),
@@ -131,7 +133,7 @@ fig1b <- ggplot(data = Overall.NO,
         legend.text = element_text(size = 12),
         legend.position = c(0.5, 0.95)); fig1b
 
-ggsave("Figure1B.tiff", width = 200, height = 150, units = "mm", dpi = 300)
+ggsave("Figure1B.tiff", width = 200, height = 130, units = "mm", dpi = 300)
 
 #----Age----
 #--percentage----
@@ -177,11 +179,12 @@ fig2a <- ggplot(data = Age,
   scale_x_continuous(name = "Survey cycle (year)", breaks = seq(2000, 2020, 6), limits = c(2000, 2020)) +
   facet_wrap(facets = ~Dem_group, ncol = 4) +
   guides(colour = guide_legend(ncol = 1)) +
-  ggtitle("2A: Prevalence (95% CI) of arthritis / joint pain cases by age") +
+  ggtitle("A") +
   theme_bw(base_size = 16, base_family = 'serif') +
   theme(panel.border = element_blank(),
         panel.grid = element_blank(),
         plot.title = element_text(size = 16),
+        plot.title.position = 'plot',
         axis.line = element_line(colour = "black", size = 0.5),
         axis.ticks = element_line(colour = "black", size = 0.5),
         axis.text = element_text(colour = 'black'),
@@ -190,8 +193,7 @@ fig2a <- ggplot(data = Age,
         legend.margin = margin(),
         legend.position = c(0.9, 0.18)); fig2a
 
-ggsave("Figure2A.tiff", width = 200, height = 150, units = "mm", dpi = 300)
-
+ggsave("Figure2A.tiff", width = 200, height = 180, units = "mm", dpi = 300)
 
 #--number----
 B.NO.age <- read.csv(url("https://www.dropbox.com/s/c804ztyzp5p2fms/B.NO.age.csv?dl=1"))
@@ -264,17 +266,18 @@ fig2b <- ggplot(data = Age.NO,
   geom_ribbon(aes(ymin = CI_Prop_low, ymax = CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.3) +
   scale_y_continuous(name = "Number of people (in millions)") +
   scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
-                      labels = c('BRFSS', 'NHANES', 'NHIS', 'Population of USA')) +
+                      labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
   scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
-                    labels = c('BRFSS', 'NHANES', 'NHIS', 'Population of USA')) +
+                    labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
   scale_x_continuous(name = "Survey cycle (year)", breaks = seq(2000, 2020, 6), limits = c(2000, 2020)) +
   facet_wrap(facets = ~Dem_group, ncol = 4) +
   guides(colour = guide_legend(ncol = 1)) +
-  ggtitle("2B: Number (95% CI) of arthritis / joint pain cases by age") +
+  ggtitle("B") +
   theme_bw(base_size = 16, base_family = 'serif') +
   theme(panel.border = element_blank(),
         panel.grid = element_blank(),
         plot.title = element_text(size = 16),
+        plot.title.position = 'plot',
         axis.line = element_line(colour = "black", size = 0.5),
         axis.ticks = element_line(colour = "black", size = 0.5),
         axis.text = element_text(colour = 'black'),
@@ -283,7 +286,7 @@ fig2b <- ggplot(data = Age.NO,
         legend.margin = margin(),
         legend.position = c(0.9, 0.18)); fig2b
 
-ggsave("Figure2B.tiff", width = 200, height = 150, units = "mm", dpi = 300)
+ggsave("Figure2B.tiff", width = 200, height = 180, units = "mm", dpi = 300)
 
 #----Sex----
 #--percentage----
@@ -292,70 +295,45 @@ B.sex <- read.csv(url("https://www.dropbox.com/s/msr0ckevqzzebu7/B.sex.csv?dl=1"
 N.sex <- read.csv(url("https://www.dropbox.com/s/hz54tam1macu7j6/N.sex.csv?dl=1"))
 NA.sex <- read.csv(url("https://www.dropbox.com/s/fxeo15d1nacngxp/NA.sex.csv?dl=1"))
 
-
 #- == SEX PREVALENCE FIGURE == ----
 
 #merge overalls
 #first add survey column to each
 B.sex$Survey <- c("BRFSS")
+B.sex <- B.sex |> filter(Year %in% BRFSS_years)
 N.sex$Survey <- c("NHIS")
 NA.sex$Survey <- c("NHANES")
 
 Sex <- Reduce(function(x, y) merge(x, y, all=TRUE), list(B.sex, N.sex, NA.sex))
-Sex$Year <- as.numeric(Sex$Year)
-
-pop_2000 <- data.frame(Proportion = c(49.1, 50.9),
-                       `CI_Prop_low` = c(NA, NA),
-                       `CI_Prop_upp` = c(NA, NA),
-                       Year = c(2000, 2000),
-                       Dem_group = c("Male", "Female"),
-                       Category = c("Sex", "Sex"),
-                       Survey = c("United States", "United States"))
-
-pop_2010 <- data.frame(Proportion = c(49.2, 50.8),
-                       `CI_Prop_low` = c(NA, NA),
-                       `CI_Prop_upp` = c(NA, NA),
-                       Year = c(2010, 2010),
-                       Dem_group = c("Male", "Female"),
-                       Category = c("Sex", "Sex"),
-                       Survey = c("United States", "United States"))
-
-
-pop_2020 <- data.frame(Proportion = c(49.5, 50.5),
-                       `CI_Prop_low` = c(NA, NA),
-                       `CI_Prop_upp` = c(NA, NA),
-                       Year = c(2020, 2020),
-                       Dem_group = c("Male", "Female"),
-                       Category = c("Sex", "Sex"),
-                       Survey = c("United States", "United States"))
-
-Sex <- Reduce(function(x, y) merge(x, y, all=TRUE), list(Sex, pop_2000, pop_2010, pop_2020))
 
 #plot
 fig3a <- ggplot(data = Sex,
-                aes(x = Year, y = Proportion, group = Survey, fill = Survey, colour = Survey)) +
-  geom_line(size = 0.2) +
-  geom_point(size = 0.3) +
-  geom_ribbon(aes(ymin = Sex$CI_Prop_low, ymax = Sex$CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.2) +
-  scale_y_continuous(name = "Prevalence (%)", breaks = c(0, 25, 50, 75, 100), limits = c(0, 100)) +
-  scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
-  scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
-  scale_x_continuous(name = "Survey cycles (years)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
-  facet_wrap(facets = ~Dem_group, ncol = 4) +
-  theme_bw() +
-  theme(panel.border = element_blank()) +
-  theme(axis.line = element_line(colour = "black")) +
-  theme(text=element_text(family = "myfont", size = 10)) +
-  xlab("Survey cycles (years)") +
-  ggtitle("3A") +
-  theme(strip.background = element_blank(),
-        strip.text = element_text(size = 8, family = "myfont")) +
-  theme(plot.title = element_text(size = 12, face = "bold", family = "myfont"),
-        legend.title = element_text(size = 10, face = "bold", family = "myfont"),
-        legend.text = element_text(size = 10, family = "myfont"),
-        legend.position = "bottom")
-ggsave("Figure3A.tiff", width = 150, height = 100, units = "mm", device = "tiff", dpi = 500)
+                aes(x = Year, y = Proportion, fill = Survey, colour = Survey)) +
+  geom_line(size = 0.5) +
+  geom_point(size = 2) +
+  geom_ribbon(aes(ymin = CI_Prop_low, ymax = CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.3) +
+  scale_y_continuous(name = "Prevalence (%)", breaks = c(0, 25, 50, 75, 100), limits = c(0, 110)) +
+  scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue")) +
+  scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue")) +
+  scale_x_continuous(name = "Survey cycle (year)", breaks = seq(2000, 2020, 5), limits = c(2000, 2020)) +
+  facet_wrap(facets = ~Dem_group, ncol = 2) +
+  guides(colour = guide_legend(ncol = 3)) +
+  ggtitle("A") +
+  theme_bw(base_size = 20, base_family = 'serif') +
+  theme(panel.border = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(size = 20),
+        plot.title.position = 'plot',
+        axis.line = element_line(colour = "black", size = 0.5),
+        axis.ticks = element_line(colour = "black", size = 0.5),
+        axis.text = element_text(colour = 'black'),
+        panel.spacing.x = unit(1.5, 'lines'),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 12),
+        legend.margin = margin(),
+        legend.position = c(0.5, 0.93)); fig3a
 
+ggsave("Figure3A.tiff", width = 200, height = 130, units = "mm", dpi = 300)
 
 #--number----
 
@@ -366,12 +344,15 @@ NA.NO.sex <- read.csv(url("https://www.dropbox.com/s/6yhvmm5sx6fg0dz/NA.NO.sex.c
 #- == SEX NUMBERS FIGURE == ----
 
 B.NO.sex$Survey <- c("BRFSS")
+B.NO.sex <- B.NO.sex |> filter(Year %in% BRFSS_years)
 N.NO.sex$Survey <- c("NHIS")
 NA.NO.sex$Survey <- c("NHANES")
-NA.NO.sex$Dem_group <- as.character(NA.NO.sex$Dem_group)
+
 Sex.NO <- Reduce(function(x, y) merge(x, y, all=TRUE), list(B.NO.sex, N.NO.sex, NA.NO.sex))
-Sex.NO$Year <- as.numeric(Sex.NO$Year)
-names(Sex.NO)[names(Sex.NO) == "Number of People"] <- "Number.People"
+
+Sex.NO <- Sex.NO |>
+    rename(Number.People = Number.of.People) |>
+    select(-X)
 
 
 Sex.NO <- Sex.NO %>%
@@ -380,24 +361,24 @@ Sex.NO <- Sex.NO %>%
   mutate(CI_Prop_upp = CI_Prop_upp/1000000)
 
 pop_2000 <- data.frame(Number.People = c(138.1, 143.4),
-                       `CI_Prop_low` = c(NA, NA),
-                       `CI_Prop_upp` = c(NA, NA),
+                       CI_Prop_low = c(NA, NA),
+                       CI_Prop_upp = c(NA, NA),
                        Year = c(2000, 2000),
                        Dem_group = c("Male", "Female"),
                        Category = c("Sex", "Sex"),
                        Survey = c("United States", "United States"))
 
 pop_2010 <- data.frame(Number.People = c(151.8, 157.0),
-                       `CI_Prop_low` = c(NA, NA),
-                       `CI_Prop_upp` = c(NA, NA),
+                       CI_Prop_low = c(NA, NA),
+                       CI_Prop_upp = c(NA, NA),
                        Year = c(2010, 2010),
                        Dem_group = c("Male", "Female"),
                        Category = c("Sex", "Sex"),
                        Survey = c("United States", "United States"))
 
 pop_2020 <- data.frame(Number.People = c(164.2, 167.3),
-                       `CI_Prop_low` = c(NA, NA),
-                       `CI_Prop_upp` = c(NA, NA),
+                       CI_Prop_low = c(NA, NA),
+                       CI_Prop_upp = c(NA, NA),
                        Year = c(2020, 2020),
                        Dem_group = c("Male", "Female"),
                        Category = c("Sex", "Sex"),
@@ -405,31 +386,36 @@ pop_2020 <- data.frame(Number.People = c(164.2, 167.3),
 
 Sex.NO <- Reduce(function(x, y) merge(x, y, all=TRUE), list(Sex.NO, pop_2000, pop_2010, pop_2020))
 
-
+#plot
 fig3b <- ggplot(data = Sex.NO,
-                aes(x = Year, y = Number.People, group = Survey, fill = Survey, colour = Survey)) +
-  geom_line(size = 0.2) +
-  geom_point(size = 0.3) +
-  geom_ribbon(aes(ymin = Sex.NO$CI_Prop_low, ymax = Sex.NO$CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.2) +
-  scale_y_continuous(name = "Number of people affected (in millions)") +
-  scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
-  scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
-  scale_x_continuous(name = "Survey cycles (years)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
-  facet_wrap(facets = ~Dem_group, ncol = 4) +
-  theme_bw() +
-  theme(panel.border = element_blank()) +
-  theme(axis.line = element_line(colour = "black")) +
-  theme(text=element_text(family = "myfont", size = 10)) +
-  xlab("Survey cycles (years)") +
-  ggtitle("3B") +
-  theme(strip.background = element_blank(),
-        strip.text = element_text(size = 8, family = "myfont")) +
-  theme(plot.title = element_text(size = 12, face = "bold", family = "myfont"),
-        legend.title = element_text(size = 10, face = "bold", family = "myfont"),
-        legend.text = element_text(size = 10, family = "myfont"),
-        legend.position = "bottom")
-ggsave("Figure3B.tiff", width = 150, height = 100, units = "mm", device = "tiff", dpi = 500)
+                aes(x = Year, y = Number.People, fill = Survey, colour = Survey)) +
+  geom_line(size = 0.5) +
+  geom_point(size = 2) +
+  geom_ribbon(aes(ymin = CI_Prop_low, ymax = CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.3) +
+  scale_y_continuous(name = "Number of people (in millions)", limits = c(10, 190)) +
+  scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
+                    labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
+  scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
+                    labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
+  scale_x_continuous(name = "Survey cycle (year)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
+  facet_wrap(facets = ~Dem_group, ncol = 2) +
+  guides(colour = guide_legend(ncol = 4)) +
+  ggtitle("B") +
+  theme_bw(base_size = 20, base_family = 'serif') +
+  theme(panel.border = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(size = 20),
+        plot.title.position = 'plot',
+        axis.line = element_line(colour = "black", size = 0.5),
+        axis.ticks = element_line(colour = "black", size = 0.5),
+        axis.text = element_text(colour = 'black'),
+        panel.spacing.x = unit(1.5, 'lines'),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 12),
+        legend.margin = margin(),
+        legend.position = c(0.5, 0.93)); fig3b
 
+ggsave("Figure3B.tiff", width = 200, height = 130, units = "mm", dpi = 300)
 
 #----BMI----
 # the prevalence of people in each weight category nationally, and the number of people in each weight category nationally,
@@ -442,70 +428,50 @@ B.BMI <- read.csv(url("https://www.dropbox.com/s/9taeil9a7ymd38u/B.BMI.csv?dl=1"
 N.BMI <- read.csv(url("https://www.dropbox.com/s/23daxh29apzpam2/N.BMI.csv?dl=1"))
 NA.BMI <- read.csv(url("https://www.dropbox.com/s/vfuyksioocfaiip/NA.BMI.csv?dl=1"))
 
-
 #- == BMI PREVALENCE FIGURE == -----
 
 #merge overalls
 #first add survey column to each
 B.BMI$Survey <- c("BRFSS")
+B.BMI <- B.BMI |> filter(Year %in% BRFSS_years)
 N.BMI$Survey <- c("NHIS")
 NA.BMI$Survey <- c("NHANES")
 
 BMI <- Reduce(function(x, y) merge(x, y, all=TRUE), list(B.BMI, N.BMI, NA.BMI))
-BMI$Year <- as.numeric(BMI$Year)
 
-pop_2000 <- data.frame(Proportion = c(37.5, 2.15, 35.35, 25.05),
-                       `CI_Prop_low` = c(NA, NA, NA, NA),
-                       `CI_Prop_upp` = c(NA, NA, NA, NA),
-                       Year = c(2000, 2000, 2000, 2000),
-                       Dem_group = c("Healthy weight", "Underweight", "Overweight", "Obese"),
-                       Category = c("BMI", "BMI", "BMI", "BMI"),
-                       Survey = c("United States", "United States", "United States", "United States"))
-
-pop_2010 <- data.frame(Proportion = c(32.16, 1.78, 34.55, 31.51),
-                       `CI_Prop_low` = c(NA, NA, NA, NA),
-                       `CI_Prop_upp` = c(NA, NA, NA, NA),
-                       Year = c(2010, 2010, 2010, 2010),
-                       Dem_group = c("Healthy weight", "Underweight", "Overweight", "Obese"),
-                       Category = c("BMI", "BMI", "BMI", "BMI"),
-                       Survey = c("United States", "United States", "United States", "United States"))
-
-
-pop_2020 <- data.frame(Proportion = c(31.34, 1.9, 34.84, 31.92),
-                       `CI_Prop_low` = c(NA, NA, NA, NA),
-                       `CI_Prop_upp` = c(NA, NA, NA, NA),
-                       Year = c(2020, 2020, 2020, 2020),
-                       Dem_group = c("Healthy weight", "Underweight", "Overweight", "Obese"),
-                       Category = c("BMI", "BMI", "BMI", "BMI"),
-                       Survey = c("United States", "United States", "United States", "United States"))
-
-BMI <- Reduce(function(x, y) merge(x, y, all=TRUE), list(BMI, pop_2000, pop_2010, pop_2020))
+BMI <- BMI |>
+    mutate(Dem_group = factor(Dem_group,
+                              levels = c("Underweight", "Healthy weight", "Overweight", "Obese"),
+                              ordered = TRUE))
 
 #plot
 fig4a <- ggplot(data = BMI,
                 aes(x = Year, y = Proportion, group = Survey, fill = Survey, colour = Survey)) +
-  geom_line(size = 0.2) +
-  geom_point(size = 0.3) +
-  geom_ribbon(aes(ymin = BMI$CI_Prop_low, ymax = BMI$CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.2) +
-  scale_y_continuous(name = "Prevalence (%)", breaks = c(0, 25, 50, 75, 100), limits = c(0, 100)) +
+  geom_line(size = 0.5) +
+  geom_point(size = 2) +
+  geom_ribbon(aes(ymin = CI_Prop_low, ymax = CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.3) +
+  scale_y_continuous(name = "Prevalence (%)", breaks = c(0, 25, 50, 75, 100), limits = c(0, 125)) +
   scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
   scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
-  scale_x_continuous(name = "Survey cycles (years)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
+  scale_x_continuous(name = "Survey cycle (year)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
   facet_wrap(facets = ~Dem_group, ncol = 2) +
-  theme_bw() +
-  theme(panel.border = element_blank()) +
-  theme(axis.line = element_line(colour = "black")) +
-  theme(text=element_text(family = "myfont", size = 10)) +
-  xlab("Survey cycles (years)") +
-  ggtitle("4A") +
-  theme(strip.background = element_blank(),
-        strip.text = element_text(size = 8, family = "myfont")) +
-  theme(plot.title = element_text(size = 12, face = "bold", family = "myfont"),
-        legend.title = element_text(size = 10, face = "bold", family = "myfont"),
-        legend.text = element_text(size = 10, family = "myfont"),
-        legend.position = "bottom")
-ggsave("Figure4A.tiff", width = 150, height = 100, units = "mm", device = "tiff", dpi = 500)
+  guides(colour = guide_legend(ncol = 3)) +
+  ggtitle("A") +
+  theme_bw(base_size = 20, base_family = 'serif') +
+  theme(panel.border = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(size = 20),
+        plot.title.position = 'plot',
+        axis.line = element_line(colour = "black", size = 0.5),
+        axis.ticks = element_line(colour = "black", size = 0.5),
+        axis.text = element_text(colour = 'black'),
+        panel.spacing.x = unit(1.5, 'lines'),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 12),
+        legend.margin = margin(),
+        legend.position = c(0.5, 0.95)); fig4a
 
+ggsave("Figure4A.tiff", width = 200, height = 170, units = "mm", dpi = 300)
 
 #--number----
 
@@ -516,13 +482,15 @@ NA.NO.BMI <- read.csv(url("https://www.dropbox.com/s/u2vwmda1ds4d9ky/NA.NO.BMI.c
 #- == BMI NUMBERS FIGURE == -----
 
 B.NO.BMI$Survey <- c("BRFSS")
+B.NO.BMI <- B.NO.BMI |>  filter(Year %in% BRFSS_years)
 N.NO.BMI$Survey <- c("NHIS")
 NA.NO.BMI$Survey <- c("NHANES")
-NA.NO.BMI$Dem_group <- as.character(NA.NO.BMI$Dem_group)
-BMI.NO <- Reduce(function(x, y) merge(x, y, all=TRUE), list(B.NO.BMI, N.NO.BMI, NA.NO.BMI))
-BMI.NO$Year <- as.numeric(BMI.NO$Year)
-names(BMI.NO)[names(BMI.NO) == "Number of People"] <- "Number.People"
 
+BMI.NO <- Reduce(function(x, y) merge(x, y, all=TRUE), list(B.NO.BMI, N.NO.BMI, NA.NO.BMI))
+
+BMI.NO <- BMI.NO |>
+    select(-X) |>
+    rename(Number.People = Number.of.People)
 
 BMI.NO <- BMI.NO %>%
   mutate(Number.People = Number.People/1000000) %>%
@@ -530,24 +498,24 @@ BMI.NO <- BMI.NO %>%
   mutate(CI_Prop_upp = CI_Prop_upp/1000000)
 
 pop_2000 <- data.frame(Number.People = c(105.39, 6.05, 99.48, 70.5),
-                       `CI_Prop_low` = c(NA, NA, NA, NA),
-                       `CI_Prop_upp` = c(NA, NA, NA, NA),
+                       CI_Prop_low = c(NA, NA, NA, NA),
+                       CI_Prop_upp = c(NA, NA, NA, NA),
                        Year = c(2000, 2000, 2000, 2000),
                        Dem_group = c("Healthy weight", "Underweight", "Overweight", "Obese"),
                        Category = c("BMI", "BMI", "BMI", "BMI"),
                        Survey = c("United States", "United States", "United States", "United States"))
 
 pop_2010 <- data.frame(Number.People = c(99.29, 5.50, 106.67, 97.29),
-                       `CI_Prop_low` = c(NA, NA, NA, NA),
-                       `CI_Prop_upp` = c(NA, NA, NA, NA),
+                       CI_Prop_low = c(NA, NA, NA, NA),
+                       CI_Prop_upp = c(NA, NA, NA, NA),
                        Year = c(2010, 2010, 2010, 2010),
                        Dem_group = c("Healthy weight", "Underweight", "Overweight", "Obese"),
                        Category = c("BMI", "BMI", "BMI", "BMI"),
                        Survey = c("United States", "United States", "United States", "United States"))
 
 pop_2020 <- data.frame(Number.People = c(103.89, 6.3, 115.49, 105.8),
-                       `CI_Prop_low` = c(NA, NA, NA, NA),
-                       `CI_Prop_upp` = c(NA, NA, NA, NA),
+                       CI_Prop_low = c(NA, NA, NA, NA),
+                       CI_Prop_upp = c(NA, NA, NA, NA),
                        Year = c(2020, 2020, 2020, 2020),
                        Dem_group = c("Healthy weight", "Underweight", "Overweight", "Obese"),
                        Category = c("BMI", "BMI", "BMI", "BMI"),
@@ -555,28 +523,38 @@ pop_2020 <- data.frame(Number.People = c(103.89, 6.3, 115.49, 105.8),
 
 BMI.NO <- Reduce(function(x, y) merge(x, y, all=TRUE), list(BMI.NO, pop_2000, pop_2010, pop_2020))
 
+BMI.NO <- BMI.NO |>
+    mutate(Dem_group = factor(Dem_group,
+                              levels = c("Underweight", "Healthy weight", "Overweight", "Obese"),
+                              ordered = TRUE))
 
 fig4b <- ggplot(data = BMI.NO,
                 aes(x = Year, y = Number.People, group = Survey, fill = Survey, colour = Survey)) +
-  geom_line(size = 0.2) +
-  geom_point(size = 0.3) +
-  geom_ribbon(aes(ymin = BMI.NO$CI_Prop_low, ymax = BMI.NO$CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.2) +
-  scale_y_continuous(name = "Number of people affected (in millions)") +
-  scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
-  scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black")) +
-  scale_x_continuous(name = "Survey cycles (years)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
+  geom_line(size = 0.5) +
+  geom_point(size = 2) +
+  geom_ribbon(aes(ymin = CI_Prop_low, ymax = CI_Prop_upp, fill = Survey, linetype = NA), alpha = 0.3) +
+  scale_y_continuous(name = "Number of people (in millions)", limits = c(0, 150)) +
+  scale_colour_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
+                    labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
+  scale_fill_manual(values = c("aquamarine4", "goldenrod3", "midnightblue", "black"),
+                    labels = c('BRFSS', 'NHANES', 'NHIS', 'USA population')) +
+  scale_x_continuous(name = "Survey cycle (year)", breaks = seq(2000, 2020, 4), limits = c(2000, 2020)) +
   facet_wrap(facets = ~Dem_group, ncol = 2) +
-  theme_bw() +
-  theme(panel.border = element_blank()) +
-  theme(axis.line = element_line(colour = "black")) +
-  theme(text=element_text(family = "myfont", size = 10)) +
-  xlab("Survey cycles (years)") +
-  ggtitle("4B") +
-  theme(strip.background = element_blank(),
-        strip.text = element_text(size = 8, family = "myfont")) +
-  theme(plot.title = element_text(size = 12, face = "bold", family = "myfont"),
-        legend.title = element_text(size = 10, face = "bold", family = "myfont"),
-        legend.text = element_text(size = 10, family = "myfont"),
-        legend.position = "bottom")
-ggsave("Figure4B.tiff", width = 150, height = 100, units = "mm", device = "tiff", dpi = 500)
+  guides(colour = guide_legend(ncol = 4)) +
+  ggtitle("B") +
+  theme_bw(base_size = 20, base_family = 'serif') +
+  theme(panel.border = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(size = 20),
+        plot.title.position = 'plot',
+        axis.line = element_line(colour = "black", size = 0.5),
+        axis.ticks = element_line(colour = "black", size = 0.5),
+        axis.text = element_text(colour = 'black'),
+        panel.spacing.x = unit(1.5, 'lines'),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 12),
+        legend.margin = margin(),
+        legend.position = c(0.5, 0.95)); fig4b
+
+ggsave("Figure4B.tiff", width = 200, height = 170, units = "mm", dpi = 300)
 
